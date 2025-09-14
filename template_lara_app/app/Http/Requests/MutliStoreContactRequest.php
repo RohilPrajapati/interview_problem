@@ -21,8 +21,18 @@ class MutliStoreContactRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            "list_contacts" => ["required","array"]
+        // Import the rules from StoreContactRequest
+        $contactRules = (new StoreContactRequest())->rules();
+
+        // Apply them to each element in list_contacts.*
+        $rules = [
+            "list_contacts" => ["required", "array"],
         ];
+
+        foreach ($contactRules as $field => $validation) {
+            $rules["list_contacts.*.$field"] = $validation;
+        }
+
+        return $rules;
     }
 }

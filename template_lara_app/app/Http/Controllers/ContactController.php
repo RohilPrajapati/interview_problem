@@ -18,6 +18,6 @@ class ContactController extends Controller
         return response()->json([
             "message"=> "Create Contact successfully",
             "data" => $contact
-        ],200);
+        ],201);
     }
 }

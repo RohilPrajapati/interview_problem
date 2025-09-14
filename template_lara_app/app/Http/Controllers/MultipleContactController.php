@@ -8,21 +8,22 @@ use Illuminate\Http\Request;
 
 class MultipleContactController extends Controller
 {
-    function store(MutliStoreContactRequest $request)
+    public function store(MutliStoreContactRequest $request)
     {
         $data = $request->validated();
 
+        $now = now();
+        $contacts = collect($data['list_contacts'])->map(function ($item) use ($now) {
+            return array_merge($item, [
+                'created_at' => $now,
+                'updated_at' => $now,
+            ]);
+        })->toArray();
 
-        foreach ($data['list_contacts'] as $item) {
-            $contact = new Contact($item);
-            $contact->created_at = now();
-            $contact->updated_at = now();
-            $contact->save();
-        }
-
+        Contact::insert($contacts);
 
         return response()->json([
-            "message"=> "Create Contact successfully"
-        ],201);
+            "message" => "Contacts created successfully",
+        ], 201);
     }
 }
