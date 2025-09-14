@@ -1,0 +1,8 @@
+# Ignore all SQLite database files
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+
+**/__pycache__/**
+

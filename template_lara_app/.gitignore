@@ -1,0 +1,32 @@
+# Laravel & PHP
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+.env
+.phpunit.result.cache
+Homestead.yaml
+Homestead.json
+/.vagrant
+.idea
+/.phpunit.cache
+
+# Laravel caches
+bootstrap/cache/*.php
+
+# SQLite databases
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+*.sqlite-*
+
+# Composer & NPM logs
+composer.lock
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# OS files
+.DS_Store
+Thumbs.db
